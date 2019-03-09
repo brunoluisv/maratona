@@ -2,54 +2,68 @@
 #include <stdlib.h>
 #include <locale.h>
 
-typedef struct lista {
+typedef struct {
 	int cod;
 	char *nome;
 	char *t_corrida;
 	char *dt_corrida;
-	struct lista *prox;
-} Registros;
+} Registro;
 
-Registros *inicia_registros(int cod, char *nome, char *t_corrida, char *dt_corrida);
-Registros *insere_registros(Registros *registros, int cod, char *nome, char *t_corrida, char *dt_corrida);
-void mostra_registros(Registros *registros);
+int insere_reg(){
+	FILE *arquivo_maratona;
+	arquivo_maratona = fopen("maratona.txt", "a+");
+	Registro maratona_reg;
 
-void insere();
-void mostra();
+	if(arquivo_maratona == NULL){
+		printf("Erro ao Abrir");
+		return 1;
+	}
 
-Registros *principal = NULL;
+	system("clear || cls");
+	printf("|	INSERIR REGISTRO	|");
+	printf("1 - Código Corredor: ");
+	scanf("%d", &maratona_reg.id);
+	fprintf(arquivo_maratona, "%d  ", maratona_reg.id);
+	printf("2 - Nome Corredor: ");
+	scanf("%[^\n]s", maratona_reg.nome);
+	fprintf(arquivo_maratona, "%s ", maratona_reg.nome);
+	printf("3 - Tempo de Corrida: ");
+	scanf("%[^\n]s", maratona_reg.t_corrida);
+	fprintf(arquivo_maratona, "%s ", maratona_reg.t_corrida);
+	printf("4 - Data da Corrida: ");
+	scanf("%[^\n]s", maratona_reg.dt_corrida);
+	fprintf(arquivo_maratona, "%s ", maratona_reg.dt_corrida);
 
-Registros *inicia_registros(int cod, char *nome, char *t_corrida, char *dt_corrida){
-	Registros *novo;
-
-	novo = (Registros *)malloc(sizeof(Registros));
-	novo->cod = cod;
-	novo->nome = (char *)malloc(strlen(nome)+1);
-	strncpy(novo->nome, nome, strlen(nome)+1);
-	novo->t_corrida = (char *)malloc(strlen(t_corrida)+1);
-	strncpy(novo->t_corrida, t_corrida, strlen(t_corrida)+1);
-	novo->dt_corrida = (char *)malloc(strlen(dt_corrida)+1);
-	strncpy(novo->dt_corrida, dt_corrida, strlen(dt_corrida)+1);
-	novo->prox = NULL;
-
-	return novo;
+	fclose(arquivo_maratona);
+	printf("<== VOLTAR - PRESSIONE 0");
+	scanf("%d", &op2);
 }
 
-Registros *insere_registros(Registros *registros, int cod, char *nome, char *t_corrida, char *dt_corrida){
-	Registros *novo;
+int mostra_reg(){
+	FILE *arquivo_maratona;
+	arquivo_maratona = fopen("maratona.txt", "a+");
+	Registro maratona_reg;
 
-	novo = (Registros *)malloc(sizeof(Registros));
-	novo->cod = cod;
-	novo->nome = (char *)malloc(strlen(nome)+1);
-	strncpy(novo->nome, nome, strlen(nome)+1);
-	novo->t_corrida = (char *)malloc(strlen(t_corrida)+1);
-	strncpy(novo->t_corrida, t_corrida, strlen(t_corrida)+1);
-	novo->dt_corrida = (char *)malloc(strlen(dt_corrida)+1);
-	strncpy(novo->dt_corrida, dt_corrida, strlen(dt_corrida)+1);
-	novo->prox = NULL;
+	system("clear || cls");
+	printf("> 1 - ID Corredor\n");
+	printf("> 2 - Nome Corredor\n");
+	printf("> 3 - Tempo de Corrida\n");
+	printf("> 4 - Data de Corrida\n");
+	printf("> Pressione 1 para listar\n");
+	scanf("%d", op1);
 
-	return novo;
+	switch(op1){
+		case 1:
+			while(fscanf(arquivo_maratona, "%c", &c) != EOF){
+				printf("%c", c);
+			}
+			fclose(arquivo_maratona);
+		break;
+	}
+	printf("\n\n<== VOLTAR - PRESSIONE 0");
+	scanf("%d", &op2);
 }
+
 
 
 int main(){
