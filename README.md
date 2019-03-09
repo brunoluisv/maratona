@@ -1,13 +1,8 @@
 # maratona
 Trabalho PRA - Maratona
 
-Clonar Repositório
-git clone https://github.com/brunoluisv/maratona.git
+Clonar Repositório --> git clone https://github.com/brunoluisv/maratona.git
 
-Adicionar Alterações
-git add .
-git commit
-git push
+Adicionar Alterações --> git add . --> git commit --> git push
 
-Lembrar de dar um pull antes de iniciar alguma alteração
-git pull
+Lembrar de dar um pull antes de iniciar alguma alteração --> git pull
