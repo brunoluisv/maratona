@@ -64,12 +64,39 @@ int mostra_reg(){
 	scanf("%d", &op2);
 }
 
+int del_reg(){
+	FILE *arquivo_maratona;
+	arquivo_maratona = fopen("maratona.txt", "a+");
+	Registro maratona_reg;
+	system("clear || cls");
+
+	if(fscanf(arquivo_maratona, "%c", &c) == EOF){
+		printf("Nenhum Maratonista cadastrado!\n");
+		insere_reg();
+	}else{
+		printf(" _________________________________\n", );
+		printf("| Apagar dados de um maratonista? |");
+		printf("\n\nDigite 1 para continuar: ");
+		scanf("%d", &op1);
+
+		switch(op1){
+			case 1:
+				system("clear || cls");
+				while(remove("maratona.txt") == 0){
+					printf("Todos Maratonistas excluidos!!");
+				}
+				break;
+		}
+		printf("\n\n<== VOLTAR - PRESSIONE 0");
+		scanf("%d", &op2);
+	}
+}
 
 
 int main(){
 	setlocale(LC_ALL, "Portuguese");
   	int op, registros, tam;
-  	
+
   	printf("Defina a quantidade de registros\n");
   	printf("1 - POR QUANTIDADE\n");
   	printf("2 - POR TAMANHO DO ARQUIVO\n");
