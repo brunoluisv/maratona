@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <time.h>
 
 typedef struct {
 	int cod;
@@ -170,9 +171,13 @@ int menu(){
 
 int main(){
 	setlocale(LC_ALL, "Portuguese");
+	//clock_t tempo;
+  	//tempo = clock();
   	for(;;){
   		menu();
   	}
+
+  	//printf("Tempo: %f",(clock() - tempo) / (double)CLOCKS_PER_SEC);
   	
   	return 0;
 }
