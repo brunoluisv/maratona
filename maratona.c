@@ -68,7 +68,7 @@ int mostra_reg(){
 	Registro maratona_reg;
 
 	system("clear || cls");
-	printf("> FORMATO\n")
+	printf("> FORMATO\n");
 	printf("> Código > Nome > Tempo (hh:mm:ss:ms) > Data (dd/mm/aaaa)\n");
 	printf("> Pressione 1 para listar\n");
 	scanf("%d", &op1);
