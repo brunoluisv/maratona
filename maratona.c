@@ -81,7 +81,7 @@ int mostra_reg(){
 			fclose(arquivo_maratona);
 		break;
 	}
-	printf("\n\n<== VOLTAR - PRESSIONE 0");
+	printf("\n\n<== VOLTAR - PRESSIONE 0 ==> ");
 	scanf("%d", &op2);
 }
 
